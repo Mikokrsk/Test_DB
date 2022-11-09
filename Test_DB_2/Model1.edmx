@@ -13,7 +13,6 @@
           <Property Name="Date_of_holding" Type="date" Nullable="false" />
           <Property Name="ApartmentsID" Type="int" Nullable="false" />
           <Property Name="BuyersID" Type="int" Nullable="false" />
-          <Property Name="SellersID" Type="int" Nullable="false" />
           <Property Name="WorkersID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Apartments">
@@ -21,7 +20,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Number_of_rooms" Type="int" Nullable="false" />
           <Property Name="Area" Type="int" Nullable="false" />
@@ -102,18 +101,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Agreements_Sellers">
-          <End Role="Sellers" Type="Self.Sellers" Multiplicity="1" />
-          <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sellers">
-              <PropertyRef Name="Passport_num" />
-            </Principal>
-            <Dependent Role="Agreements">
-              <PropertyRef Name="SellersID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Agreements_Workers">
           <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
           <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
@@ -166,10 +153,6 @@
             <End Role="Buyers" EntitySet="Buyers" />
             <End Role="Agreements" EntitySet="Agreements" />
           </AssociationSet>
-          <AssociationSet Name="FK_Agreements_Sellers" Association="Self.FK_Agreements_Sellers">
-            <End Role="Sellers" EntitySet="Sellers" />
-            <End Role="Agreements" EntitySet="Agreements" />
-          </AssociationSet>
           <AssociationSet Name="FK_Agreements_Workers" Association="Self.FK_Agreements_Workers">
             <End Role="Workers" EntitySet="Workers" />
             <End Role="Agreements" EntitySet="Agreements" />
@@ -196,11 +179,9 @@
           <Property Name="Date_of_holding" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ApartmentsID" Type="Int32" Nullable="false" />
           <Property Name="BuyersID" Type="Int32" Nullable="false" />
-          <Property Name="SellersID" Type="Int32" Nullable="false" />
           <Property Name="WorkersID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Apartments" Relationship="Self.FK_Agreements_Apartments" FromRole="Agreements" ToRole="Apartments" />
           <NavigationProperty Name="Buyers" Relationship="Self.FK_Agreements_Buyers" FromRole="Agreements" ToRole="Buyers" />
-          <NavigationProperty Name="Sellers" Relationship="Self.FK_Agreements_Sellers" FromRole="Agreements" ToRole="Sellers" />
           <NavigationProperty Name="Workers" Relationship="Self.FK_Agreements_Workers" FromRole="Agreements" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Apartments">
@@ -208,7 +189,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Number_of_rooms" Type="Int32" Nullable="false" />
           <Property Name="Area" Type="Int32" Nullable="false" />
@@ -247,7 +228,6 @@
           <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Residence_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone_number" Type="Int32" />
-          <NavigationProperty Name="Agreements" Relationship="Self.FK_Agreements_Sellers" FromRole="Sellers" ToRole="Agreements" />
           <NavigationProperty Name="Apartments" Relationship="Self.FK_Apartments_Sellers" FromRole="Sellers" ToRole="Apartments" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -297,18 +277,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Agreements_Sellers">
-          <End Role="Sellers" Type="Self.Sellers" Multiplicity="1" />
-          <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sellers">
-              <PropertyRef Name="Passport_num" />
-            </Principal>
-            <Dependent Role="Agreements">
-              <PropertyRef Name="SellersID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Agreements_Workers">
           <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
           <End Role="Agreements" Type="Self.Agreements" Multiplicity="*" />
@@ -345,7 +313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="realtor_companyEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="realtor_companyEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agreements" EntityType="Self.Agreements" />
           <EntitySet Name="Apartments" EntityType="Self.Apartments" />
           <EntitySet Name="Buyers" EntityType="Self.Buyers" />
@@ -359,10 +327,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Agreements_Buyers" Association="Self.FK_Agreements_Buyers">
             <End Role="Buyers" EntitySet="Buyers" />
-            <End Role="Agreements" EntitySet="Agreements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Agreements_Sellers" Association="Self.FK_Agreements_Sellers">
-            <End Role="Sellers" EntitySet="Sellers" />
             <End Role="Agreements" EntitySet="Agreements" />
           </AssociationSet>
           <AssociationSet Name="FK_Agreements_Workers" Association="Self.FK_Agreements_Workers">
@@ -383,7 +347,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище realtor_companyModelContainer" CdmEntityContainer="realtor_companyEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище realtor_companyModelContainer" CdmEntityContainer="realtor_companyEntities2">
           <EntitySetMapping Name="Agreements">
             <EntityTypeMapping TypeName="realtor_companyModel.Agreements">
               <MappingFragment StoreEntitySet="Agreements">
@@ -391,7 +355,6 @@
                 <ScalarProperty Name="Date_of_holding" ColumnName="Date_of_holding" />
                 <ScalarProperty Name="ApartmentsID" ColumnName="ApartmentsID" />
                 <ScalarProperty Name="BuyersID" ColumnName="BuyersID" />
-                <ScalarProperty Name="SellersID" ColumnName="SellersID" />
                 <ScalarProperty Name="WorkersID" ColumnName="WorkersID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -400,7 +363,7 @@
             <EntityTypeMapping TypeName="realtor_companyModel.Apartments">
               <MappingFragment StoreEntitySet="Apartments">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Number_of_rooms" ColumnName="Number_of_rooms" />
                 <ScalarProperty Name="Area" ColumnName="Area" />

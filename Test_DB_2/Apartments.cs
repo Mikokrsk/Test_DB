@@ -21,7 +21,7 @@ namespace Test_DB_2
         }
     
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string Description { get; set; }
         public string Address { get; set; }
         public int Number_of_rooms { get; set; }
         public int Area { get; set; }

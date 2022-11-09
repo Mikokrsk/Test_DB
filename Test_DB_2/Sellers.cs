@@ -17,7 +17,6 @@ namespace Test_DB_2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sellers()
         {
-            this.Agreements = new HashSet<Agreements>();
             this.Apartments = new HashSet<Apartments>();
         }
     
@@ -27,8 +26,6 @@ namespace Test_DB_2
         public string Residence_address { get; set; }
         public Nullable<int> Phone_number { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Agreements> Agreements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Apartments> Apartments { get; set; }
     }

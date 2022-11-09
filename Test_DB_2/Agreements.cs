@@ -18,12 +18,10 @@ namespace Test_DB_2
         public System.DateTime Date_of_holding { get; set; }
         public int ApartmentsID { get; set; }
         public int BuyersID { get; set; }
-        public int SellersID { get; set; }
         public int WorkersID { get; set; }
     
         public virtual Apartments Apartments { get; set; }
         public virtual Buyers Buyers { get; set; }
-        public virtual Sellers Sellers { get; set; }
         public virtual Workers Workers { get; set; }
     }
 }

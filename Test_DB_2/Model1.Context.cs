@@ -13,10 +13,10 @@ namespace Test_DB_2
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class realtor_companyEntities1 : DbContext
+    public partial class realtor_companyEntities2 : DbContext
     {
-        public realtor_companyEntities1()
-            : base("name=realtor_companyEntities1")
+        public realtor_companyEntities2()
+            : base("name=realtor_companyEntities2")
         {
         }
     
