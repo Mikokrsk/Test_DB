@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="594302cf18d24aa3acf5b5a72e0b0146" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="realtor_companyModel.Agreements" Width="1.5" PointX="5.625" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.Apartments" Width="1.5" PointX="3.375" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.Buyers" Width="1.5" PointX="7.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.Positions" Width="1.5" PointX="10.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.Sellers" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.sysdiagrams" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="realtor_companyModel.Workers" Width="1.5" PointX="8.625" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="realtor_companyModel.FK_Agreements_Apartments" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.875" PointY="8.2208968098958337" />
+          <ConnectorPoint PointX="5.625" PointY="8.2208968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="realtor_companyModel.FK_Agreements_Buyers" ManuallyRouted="true" >
+          <ConnectorPoint PointX="8.21875" PointY="5.172587890625" />
+          <ConnectorPoint PointX="8.21875" PointY="8.6557421875" />
+          <ConnectorPoint PointX="7.125" PointY="8.6557421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="realtor_companyModel.FK_Agreements_Sellers" ManuallyRouted="false" />
+        <AssociationConnector Association="realtor_companyModel.FK_Agreements_Workers" ManuallyRouted="false" />
+        <AssociationConnector Association="realtor_companyModel.FK_Apartments_Sellers" ManuallyRouted="false" />
+        <AssociationConnector Association="realtor_companyModel.FK_Workers_Positions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
